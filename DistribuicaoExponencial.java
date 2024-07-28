@@ -1,11 +1,6 @@
-import java.util.Random;
+import Abstract.Distribuicao;
 
-abstract class Distribuicao {
-    public abstract double[] gerarValores(int tamanho);
-    public abstract double calcularMedia(double[] valores);
-    public abstract double calcularVariancia(double[] valores);
-    public abstract double calcularDesvioPadrao(double[] valores);
-}
+import java.util.Random;
 
 public class DistribuicaoExponencial extends Distribuicao {
     private double lambda;

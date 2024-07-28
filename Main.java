@@ -1,21 +1,39 @@
+import Generic.Estatisticas;
+
 public class Main {
     public static void main(String[] args) {
-        // Cria uma distribuição exponencial com lambda = 1.0
-        DistribuicaoExponencial dist = new DistribuicaoExponencial(1.0);
+        DistribuicaoNormal distribuicaoNormal = new DistribuicaoNormal(0, 1);
+        DistribuicaoUniforme distribuicaoUniforme = new DistribuicaoUniforme(0, 1);
+        DistribuicaoExponencial distribuicaoExponencial = new DistribuicaoExponencial(1);
+        DistribuicaoPoisson distribuicaoPoisson = new DistribuicaoPoisson(2);
 
-        // Gera 1000 valores a partir da distribuição exponencial
-        double[] valores = dist.gerarValores(1000);
+        Estatisticas<DistribuicaoNormal> estatisticasNormal = new Estatisticas<>(distribuicaoNormal);
+        Estatisticas<DistribuicaoUniforme> estatisticasUniforme = new Estatisticas<>(distribuicaoUniforme);
+        Estatisticas<DistribuicaoExponencial> estatisticasExponencial = new Estatisticas<>(distribuicaoExponencial);
+        Estatisticas<DistribuicaoPoisson> estatisticasPoisson = new Estatisticas<>(distribuicaoPoisson);
 
-        // Calcula a média dos valores gerados
-        double media = dist.calcularMedia(valores);
-        System.out.println("Média: " + media);
+        System.out.println("Distribuição Normal:");
+        estatisticasNormal.imprimirValoresGerados(5);
+        estatisticasNormal.imprimirMedia();
+        estatisticasNormal.imprimirVariancia();
+        estatisticasNormal.imprimirDesvioPadrao();
 
-        // Calcula a variância dos valores gerados
-        double variancia = dist.calcularVariancia(valores);
-        System.out.println("Variância: " + variancia);
+        System.out.println("\nDistribuição Uniforme:");
+        estatisticasUniforme.imprimirValoresGerados(5);
+        estatisticasUniforme.imprimirMedia();
+        estatisticasUniforme.imprimirVariancia();
+        estatisticasUniforme.imprimirDesvioPadrao();
 
-        // Calcula o desvio padrão dos valores gerados
-        double desvioPadrao = dist.calcularDesvioPadrao(valores);
-        System.out.println("Desvio Padrão: " + desvioPadrao);
+        System.out.println("\nDistribuição Exponencial:");
+        estatisticasExponencial.imprimirValoresGerados(5);
+        estatisticasExponencial.imprimirMedia();
+        estatisticasExponencial.imprimirVariancia();
+        estatisticasExponencial.imprimirDesvioPadrao();
+
+        System.out.println("\nDistribuição Poisson:");
+        estatisticasPoisson.imprimirValoresGerados(5);
+        estatisticasPoisson.imprimirMedia();
+        estatisticasPoisson.imprimirVariancia();
+        estatisticasPoisson.imprimirDesvioPadrao();
     }
 }
